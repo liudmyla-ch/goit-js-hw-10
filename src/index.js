@@ -30,6 +30,7 @@ function selectedCountry(country) {
   fetchCountries(country)
     .then(data => {
       if (data.length > 10) {
+        clearMarkup();
         return Notiflix.Notify.info(
           'Too many matches found. Please enter a more specific name.'
         );
@@ -46,9 +47,10 @@ function selectedCountry(country) {
         countryInfoRef.innerHTML = countryInfoMarkup(data);
       }
     })
-    .catch(() =>
-      Notiflix.Notify.failure('Oops, there is no country with that name')
-    );
+    .catch(() => {
+      clearMarkup();
+      Notiflix.Notify.failure('Oops, there is no country with that name');
+    });
 }
 
 function countryListMarkup(countries) {
@@ -78,3 +80,5 @@ function clearMarkup() {
   countryListRef.innerHTML = '';
   countryInfoRef.innerHTML = '';
 }
+
+function failureMsg() {}
