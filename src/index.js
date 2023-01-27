@@ -81,4 +81,4 @@ function clearMarkup() {
   countryInfoRef.innerHTML = '';
 }
 
-function failureMsg() {}
+
